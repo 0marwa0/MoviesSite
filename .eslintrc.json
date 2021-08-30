@@ -14,11 +14,13 @@
   "plugins": ["prettier"],
   "rules": {
     "react/prop-types": 0,
+    "no-param-reassign": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": [
       "error",
       {
         "singleQuote": true,
+        "doubleQuote":true,
         "endOfLine": "auto"
       }
     ]
