@@ -1,8 +1,14 @@
 // store
-import movieReducer from "./reducers/movieReducer.js"
-import {configureStore} from "@reduxjs/toolkit"
+import { configureStore } from '@reduxjs/toolkit';
+import PopularovieReducer from './reducers/PopularReducer';
+import TopRatedReducer from './reducers/TopRatedReducer';
+import UpComingReducer from './reducers/UpComingReducer';
 
- const store = configureStore({
-    movies:movieReducer
-})
-export default store
+const store = configureStore({
+  reducer: {
+    popularMovies: PopularovieReducer,
+    topRatedMovies: TopRatedReducer,
+    upComingMovies: UpComingReducer,
+  },
+});
+export default store;
