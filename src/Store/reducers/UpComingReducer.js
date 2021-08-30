@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api, key, upcoming, lang, page } from './config';
 
-const upComingMoviesUrl = `${api}${upcoming}api_key=${key}&language=${lang}&page=${page}`;
+const upComingMoviesUrl = `${api}${upcoming}?api_key=${key}&language=${lang}&page=${page}`;
 
 export const fetchUpComingMovies = createAsyncThunk('movies/fetchMovies', () =>
   fetch(upComingMoviesUrl)
@@ -16,7 +16,7 @@ export const UpComingSlic = createSlice({
     status: 'idle',
   },
   reducers: {
-    GetPopularMovie(state, action) {
+    GetUpComingMovie(state, action) {
       state.data.push(action.payload);
     },
   },
@@ -30,5 +30,5 @@ export const UpComingSlic = createSlice({
     },
   },
 });
-export const { GetPopularMovie } = UpComingSlic;
+export const { GetUpComingMovie } = UpComingSlic;
 export default UpComingSlic.reducer;
