@@ -10,8 +10,8 @@ function App() {
   const dispatch = useDispatch();
   // const popularMovies = useSelector((state) => state);
   const topRatedMovies = useSelector((state) => state);
-  console.log(topRatedMovies, 'top');
   useEffect(() => {
+
     dispatch(fetchUpComingMovies());
     //   dispatch(fetchPopularMovies());
   }, [dispatch]);
