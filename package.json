@@ -54,6 +54,10 @@
     "prettier": "^2.3.2"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "src/**/*.{js,jsx}": [
+      "eslint",
+      "pretty-quick —staged",
+      "git add"
+    ]
   }
-}
+  }
