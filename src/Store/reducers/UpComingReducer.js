@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { api, key, upcoming, lang, page } from './config';
 
 const upComingMoviesUrl = `${api}${upcoming}?api_key=${key}&language=${lang}&page=${page}`;
 
-export const fetchUpComingMovies = createAsyncThunk('movies/fetchMovies', () =>
-  fetch(upComingMoviesUrl)
-    .then((res) => res.json())
-    .then((res) => res)
+export const fetchUpComingMovies = createAsyncThunk(
+  'movies/fetchUpComing',
+  async () => {
+    const result = await axios.get(upComingMoviesUrl).then((res) => res.data);
+    return result;
+  }
 );
 
 export const UpComingSlic = createSlice({
