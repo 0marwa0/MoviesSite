@@ -3,26 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.2.0",
     "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.16.13",
-    "axios": "^0.21.1",
     "pretty-quick": "^3.1.1",
+    "react-multi-carousel": "^2.6.5",
+    "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-multi-carousel": "^2.6.5",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "format": "prettier -w .",
@@ -47,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
@@ -57,7 +60,9 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.3.2"
+    "postcss": "^7.0.36",
+    "prettier": "^2.3.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.9"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
