@@ -1,13 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import { api, key, topRated, lang, page } from './config';
 
 const popularMoviesUrl = `${api}${topRated}?api_key=${key}&language=${lang}&page=${page}`;
-export const fetchPopularMovies = createAsyncThunk('movies/fetchMovies', () =>
-  fetch(popularMoviesUrl)
-    .then((res) => res.json())
-    .then((res) => res)
+export const fetchPopularMovies = createAsyncThunk(
+  'movies/fetchPopular',
+  async () => {
+    const result = await axios.get(popularMoviesUrl).then((res) => res.data);
+    return result;
+  }
 );
-export const MovieSlic = createSlice({
+export const PopularMovieSlic = createSlice({
   name: 'movie',
   initialState: {
     data: [],
@@ -28,5 +31,5 @@ export const MovieSlic = createSlice({
     },
   },
 });
-export const { GetPopularMovie } = MovieSlic;
-export default MovieSlic.reducer;
+export const { GetPopularMovie } = PopularMovieSlic;
+export default PopularMovieSlic.reducer;
