@@ -1,0 +1,32 @@
+.popularCard{
+height: 300px;
+width: 250px;
+background-color: rgb(243, 242, 242);
+border-radius: 10px;
+padding: 10px;
+
+}
+.popularList{
+    padding: 20px;
+    /* overflow: hidden; */
+}
+.rateCtrl{
+    border: 1px solid rgb(241, 241, 47);
+    border-radius: 10px;
+    padding: 5px;
+    height: 30px;
+    width: 40px;
+    color: rgb(243, 243, 36);
+    display: flex;
+    background-color: white;
+}
+.popularCard .cardTitle{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 320px;
+}
+.popularCard img{
+    width: 240px;
+    height: 190px
+    ;border-radius: 20px;
+}
