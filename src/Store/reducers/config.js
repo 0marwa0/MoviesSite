@@ -5,3 +5,5 @@ export const page = '1';
 export const topRated = 'movie/top_rated';
 export const popular = 'movie/popular';
 export const upcoming = 'movie/upcoming';
+export const genre = 'genre/movie/list';
+export const imageUrl = 'https://image.tmdb.org/t/p/original/';
