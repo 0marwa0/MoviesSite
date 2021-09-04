@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Footer from './shared_components/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import Footer from './shared_components/Footer/Footer';
 import Navbar from './shared_components/Navbar';
 import Sidebar from './shared_components/Sidebar';
 import HomePage from './components/homepage/HomePage';
 import Movies from './components/movies/Movies';
 import Actors from './components/actors/Actors';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchPopularMovies } from './Store/reducers/PopularReducer';
+import './styles/index.css';
+import './styles/app.css';
 // import SideBar from './SideBar';
 // import 'antd/dist/antd.css';
 // import MostPopular from './MostPopular';
@@ -21,9 +23,8 @@ function App() {
   useEffect(() => {
     dispatch(fetchPopularMovies());
   }, [dispatch]);
-console.log(data); 
+  console.log(data);
   return (
-
     <div className="App">
       <Navbar />
       <Sidebar />
@@ -31,7 +32,6 @@ console.log(data);
         <Route path="/" exact component={HomePage} />
         <Route path="/movies" component={Movies} />
         <Route path="/actors" component={Actors} />
-        <Route path="/collection" component={HomePage} />
       </Switch>
       <Footer />
     </div>
