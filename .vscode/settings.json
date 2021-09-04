@@ -1,0 +1,5 @@
+{
+    "prettier.requireConfig": true,
+    "prettier.resolveGlobalModules": true,
+    "emmet.showSuggestionsAsSnippets": true
+}
