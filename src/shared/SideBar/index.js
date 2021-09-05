@@ -2,8 +2,8 @@ import React from 'react';
 import UserCard from './UserCard';
 import './index.css';
 
-import UpComingCard from '../UpComingCard';
-import TopRatedCard from '../TopRatedCard';
+import UpComingCard from '../../Component/UpComingCard';
+import TopRatedCard from '../../Component/TopRatedCard';
 
 function SideBar() {
   return (

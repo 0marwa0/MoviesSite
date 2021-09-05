@@ -1,0 +1,33 @@
+.SideBar{
+    float: right;
+    width: 440px;
+    padding:25px;
+    height: 96.5vh;
+    display: flex;
+    margin-top: -50px;
+    flex-direction: column;
+    background-color:var(--secondery);
+    /* background-color: rgb(252, 252, 252); */
+    border-radius: 20px 0 0 0;
+   /* box-shadow: -0.1em 0 .2em rgb(70, 69, 69); */
+}
+
+.WidgetTitle{
+    padding: 7px 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--gryText)
+}
+.UserCard{
+    gap: 20px;
+    display: flex;
+    color: var(--gryText);
+    text-transform: capitalize;
+    font-size: 16px;
+    align-items: center;
+}
+.UserCard img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

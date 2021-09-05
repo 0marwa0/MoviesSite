@@ -3,7 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav className="flex w-3/4 justify-center items-end h-16 bg-white relative">
+    <nav
+      style={{
+        padding: '20px',
+        width: '900px',
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <div className="pr-8">
         <NavLink
           exact

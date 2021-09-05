@@ -1,0 +1,7 @@
+.pagination{
+color: var(--gryText);
+letter-spacing: 5px;
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
