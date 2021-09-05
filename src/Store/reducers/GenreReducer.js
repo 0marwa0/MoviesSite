@@ -28,7 +28,6 @@ export const MovieSlic = createSlice({
       state.status = 'loading';
     },
     [fetchGenre.fulfilled](state, action) {
-      console.log(action.payload.genres, 'form oven');
       state.data = toObj(action.payload.genres);
       state.status = 'idle';
     },
