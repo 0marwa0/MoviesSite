@@ -13,6 +13,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
+"import/no-unresolved": 0,
     "react/prop-types": 0,
     "no-param-reassign": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
