@@ -10,6 +10,7 @@ import PersonReducer from './reducers/PersonReducer';
 import SimilarMoviesReducer from './reducers/SimilarMoviesReducer';
 import VideoReducer from './reducers/VideoReducer';
 import MovieCast from './reducers/MovieCast';
+import UserReducer from './reducers/UserReducer';
 
 const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
     simialrMovies: SimilarMoviesReducer,
     video: VideoReducer,
     movieCast: MovieCast,
+    user: UserReducer,
   },
 });
 export default store;

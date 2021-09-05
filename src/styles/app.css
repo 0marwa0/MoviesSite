@@ -1,0 +1,26 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(10,minmax(100px,auto));
+ 
+}
+
+.nav {
+grid-column:1/6;
+
+}
+
+.sidebar {
+grid-column: 7/11;
+
+}
+
+.gridhomepage{
+  grid-column: 1/6;
+}
+
+
+.footer{
+  grid-column: 1/11;
+}
