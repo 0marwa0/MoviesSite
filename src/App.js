@@ -1,39 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Footer from './shared_components/Footer';
-import Navbar from './shared_components/Navbar';
-import Sidebar from './shared_components/Sidebar';
-import HomePage from './components/homepage/HomePage';
-import Movies from './components/movies/Movies';
-import Actors from './components/actors/Actors';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchPopularMovies } from './Store/reducers/PopularReducer';
-// import SideBar from './SideBar';
-// import 'antd/dist/antd.css';
-// import MostPopular from './MostPopular';
-// import PopularCard from './PopularCard';
-function App() {
-  const dispatch = useDispatch();
-  const popularMovies = useSelector(
-    (state) => state.popularMovies.data.results
-  );
-  const data = popularMovies ? popularMovies[0] : [];
-  useEffect(() => {
-    dispatch(fetchPopularMovies());
-  }, [dispatch]);
-console.log(data); 
-  return (
+// import Footer from './shared/Footer';
+import Navbar from './shared/Navbar';
+import HomePage from './Pages/homepage';
+import Movies from './Pages/movies';
+import Movie from './Pages/movie';
+import Actors from './Pages/actors';
+import Actor from './Pages/actor';
+import SideBar from './shared/SideBar';
 
+function App() {
+  return (
     <div className="App">
       <Navbar />
-      <Sidebar />
+      <SideBar />
       <Switch>
         <Route path="/" exact component={HomePage} />
         <Route path="/movies" component={Movies} />
         <Route path="/actors" component={Actors} />
+        <Route path="/actor/:id" component={Actor} />
+        <Route path="/movie/:id" component={Movie} />
         <Route path="/collection" component={HomePage} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
