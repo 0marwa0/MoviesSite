@@ -7,7 +7,10 @@ export default function FooterBox({ props, title }) {
       <ul style={{ listStyle: 'none', width: '20vw' }}>
         {props.map((list) => (
           <li key={list}>
-            <a className=" text-footer-link hover:text-footer-header w-2" href>
+            <a
+              className=" text-footer-link hover:text-footer-header w-2"
+              href="/"
+            >
               {list}
             </a>
           </li>

@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="three column row ml-60  ">
           {devInfo.map((info) => (
             <DeveloperTeam
-              key={info.nameDev}
+              key={info.imgUrl}
               imgUrl={info.imgUrl}
               nameDev={info.DeveloperName}
               gitUsername={info.gitHubUser}

@@ -14,6 +14,8 @@ import './styles/app.css';
 // import 'antd/dist/antd.css';
 // import MostPopular from './MostPopular';
 // import PopularCard from './PopularCard';
+import BookmarkMovies from './components/bookmarkMovies/BookmarkMovies';
+
 function App() {
   const dispatch = useDispatch();
   const popularMovies = useSelector(
@@ -24,6 +26,11 @@ function App() {
     dispatch(fetchPopularMovies());
   }, [dispatch]);
   console.log(data);
+
+  // firebase
+
+  const userName = useSelector((state) => state.user.userName);
+
   return (
     <div className="App">
       <Navbar />
@@ -32,6 +39,9 @@ function App() {
         <Route path="/" exact component={HomePage} />
         <Route path="/movies" component={Movies} />
         <Route path="/actors" component={Actors} />
+        {userName ? (
+          <Route path="/bookmarked" component={BookmarkMovies} />
+        ) : null}
       </Switch>
       <Footer />
     </div>
