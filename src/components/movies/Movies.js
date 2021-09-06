@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Movies() {
-  return <div>Movies</div>;
+  return <div className="gridhomepage">Movies</div>;
 }
 
 export default Movies;

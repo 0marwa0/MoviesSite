@@ -1,34 +1,96 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { auth, provider } from '../firebase';
+import {
+  setActiveUser,
+  setUserLogOutState,
+} from '../Store/reducers/UserReducer';
 
 function Navbar() {
+  // firebase
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.user.userName);
+
+  function handleSignIn() {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        dispatch(
+          setActiveUser({
+            userName: result.user.displayName,
+            userEmail: result.user.email,
+            photoURL: result.user.photoURL,
+          })
+        );
+      })
+      .catch(() => {});
+  }
+
+  function handleSignOut() {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch(setUserLogOutState());
+      })
+      .catch((err) => alert(err.message));
+  }
+
   return (
-    <nav className="flex w-3/4 justify-center items-end h-16 bg-white relative">
-      <div className="pr-8">
-        <NavLink
-          exact
-          className="p-8 hover:text-green-700"
-          activeClassName="text-green-600"
-          to="/"
-        >
-          Home
-        </NavLink>
-        <NavLink
-          className="p-8 hover:text-green-700"
-          activeClassName="text-green-600"
-          to="/movies"
-        >
-          Movies
-        </NavLink>
-        <NavLink
-          className="p-8 hover:text-green-700"
-          activeClassName="text-green-600"
-          to="/actors"
-        >
-          Actors
-        </NavLink>
-      </div>
-    </nav>
+    <div className="nav">
+      <nav className="flex w-3/4 justify-center items-end h-16 bg-white relative">
+        <div className="pr-8">
+          <NavLink
+            exact
+            className="p-8 hover:text-green-700"
+            activeClassName="text-green-600"
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className="p-8 hover:text-green-700"
+            activeClassName="text-green-600"
+            to="/movies"
+          >
+            Movies
+          </NavLink>
+          <NavLink
+            className="p-8 hover:text-green-700"
+            activeClassName="text-green-600"
+            to="/actors"
+          >
+            Actors
+          </NavLink>
+          {userName ? (
+            <NavLink
+              className="p-8 hover:text-green-700"
+              to="/signout"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </NavLink>
+          ) : (
+            <NavLink
+              className="p-8 hover:text-green-700"
+              to="/signin"
+              onClick={handleSignIn}
+            >
+              Sign In
+            </NavLink>
+          )}
+          {userName ? (
+            <NavLink
+              className="p-8 hover:text-green-700"
+              activeClassName="text-green-600"
+              to="/bookmarked"
+            >
+              Bookmark
+            </NavLink>
+          ) : null}
+        </div>
+      </nav>
+    </div>
   );
 }
 
