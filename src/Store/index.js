@@ -11,6 +11,7 @@ import SimilarMoviesReducer from './reducers/SimilarMoviesReducer';
 import VideoReducer from './reducers/VideoReducer';
 import MovieCast from './reducers/MovieCast';
 import UserReducer from './reducers/UserReducer';
+import BookMardReducer from './reducers/BookMarkReducer';
 
 const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ const store = configureStore({
     video: VideoReducer,
     movieCast: MovieCast,
     user: UserReducer,
+    bookMark: BookMardReducer,
   },
 });
 export default store;

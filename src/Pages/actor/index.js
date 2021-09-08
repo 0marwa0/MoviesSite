@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchPerson } from '../../Store/reducers/PersonReducer';
 import ActorProfile from './ActorProfile';
+import '../../styles/app.css';
 
 function Actor() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ function Actor() {
   }, [dispatch]);
   const data = popularMovies || [];
   return (
-    <div>
+    <div className="gridhomepage">
       <div className="actorInfo">
         <ActorProfile data={data} />
         <div>{data.biography}</div>

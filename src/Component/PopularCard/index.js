@@ -20,23 +20,25 @@ function PopularCard() {
   }, [dispatch]);
   const data = popularMovies || [];
   return (
-    <div className="popularList">
-      <Carousel responsive={fallSilder}>
-        {data.map((item) => (
-          <div className="popularCard">
-            <img src={`${imageUrl}${item.poster_path}`} alt="top rated" />
-            <div className="cardText">
-              <div className="cardTitle">
-                {/* <span> {item.title}</span> */}
-                {/* <span className="rateCtrl">{item.vote_average}</span> */}
+    <div>
+      <div style={{ width: '900px', marginLeft: '20px' }}>
+        <Carousel responsive={fallSilder}>
+          {data.map((item) => (
+            <div className="popularCard">
+              <img src={`${imageUrl}${item.poster_path}`} alt="top rated" />
+              <div className="cardText">
+                <div className="cardTitle">
+                  {/* <span> {item.title}</span> */}
+                  {/* <span className="rateCtrl">{item.vote_average}</span> */}
+                </div>
+                {item.genre_ids.map((i) => (
+                  <span>{MoviesGenre[i]}</span>
+                ))}
               </div>
-              {item.genre_ids.map((i) => (
-                <span>{MoviesGenre[i]}</span>
-              ))}
             </div>
-          </div>
-        ))}
-      </Carousel>
+          ))}
+        </Carousel>
+      </div>
     </div>
   );
 }

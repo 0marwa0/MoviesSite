@@ -10,7 +10,7 @@ function Index() {
   const UpComingMovies = useSelector(
     (state) => state.upComingMovies.data.results
   );
-  const isLoading = useSelector((state) => state.upComingMovies.status);
+  // const isLoading = useSelector((state) => state.upComingMovies.status);
   const VideoKey = useSelector((state) => state.video.data.results);
   const id = UpComingMovies ? UpComingMovies[0] : '';
 
@@ -19,19 +19,17 @@ function Index() {
     dispatch(fetchUpComingMovies());
     dispatch(fetchVideo(id.id));
   }, [dispatch]);
-  console.log(isLoading, id.id, 'wow');
   return (
     <div className="mostPopular">
+      <div className="TitleText"> Cooming Soon </div>
       <ReactPlayer
         playing
         loop
         onProgress={() => <div>loading</div>}
-        playIcon={() => <div>ss</div>}
         style={{ borderRadius: '30px', overflow: 'hidden' }}
         width="100%"
         controls
         forceAudiio
-        onReady={() => console.log('on buffer')}
         url={`https://www.youtube.com/watch?v=${key}`}
       />
     </div>

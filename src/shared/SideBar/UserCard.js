@@ -1,16 +1,17 @@
 import React from 'react';
+
+import { useSelector } from 'react-redux';
 import './index.css';
 
 function UserCard() {
-  return (
+  const user = useSelector((state) => state.user);
+
+  return user ? (
     <div className="UserCard">
-      <img
-        src="https://i.picsum.photos/id/875/200/200.jpg?hmac=5faXLEO5BJEKazGrYKfm2NgT97z_7xtPutRkFkPO8Dk"
-        alt="profile "
-      />
-      <p>marwa</p>
+      <img src={user.photoURL} alt=" " />
+      <p>{user.userName}</p>
     </div>
-  );
+  ) : null;
 }
 
 export default UserCard;

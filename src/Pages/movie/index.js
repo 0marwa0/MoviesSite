@@ -16,10 +16,12 @@ function Movie() {
     dispatch(fetchMovie(id));
   }, [dispatch]);
   return (
-    <div className="movieHolder">
-      <MovieContent MovieInfo={MovieInfo} />
-      <div className="TitleText">Simialr Movies</div>
-      <MovieSimialr SimialrMovies={SimialrMovies} />
+    <div className="gridhomepage">
+      <div className="movieHolder">
+        <MovieContent MovieInfo={MovieInfo} />
+        <div className="TitleText">Simialr Movies</div>
+        <MovieSimialr SimialrMovies={SimialrMovies} />
+      </div>
     </div>
   );
 }

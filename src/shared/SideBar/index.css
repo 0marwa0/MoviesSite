@@ -2,9 +2,9 @@
     float: right;
     width: 440px;
     padding:25px;
-    height: 96.5vh;
+    height: 800px;
     display: flex;
-    margin-top: -50px;
+    margin-top: 10px;
     flex-direction: column;
     background-color:var(--secondery);
     /* background-color: rgb(252, 252, 252); */

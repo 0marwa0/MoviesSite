@@ -6,6 +6,7 @@ import {
   setActiveUser,
   setUserLogOutState,
 } from '../Store/reducers/UserReducer';
+import '../styles/app.css';
 
 function Navbar() {
   // firebase
@@ -38,58 +39,60 @@ function Navbar() {
 
   return (
     <div className="nav">
-      <nav className="flex w-3/4 justify-center items-end h-16 bg-white relative">
-        <div className="pr-8">
-          <NavLink
-            exact
-            className="p-8 hover:text-green-700"
-            activeClassName="text-green-600"
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className="p-8 hover:text-green-700"
-            activeClassName="text-green-600"
-            to="/movies"
-          >
-            Movies
-          </NavLink>
-          <NavLink
-            className="p-8 hover:text-green-700"
-            activeClassName="text-green-600"
-            to="/actors"
-          >
-            Actors
-          </NavLink>
-          {userName ? (
+      <div>
+        <nav className="flex w-5/4 justify-center items-end h-16  relative">
+          <div className="pr-8">
             <NavLink
-              className="p-8 hover:text-green-700"
-              to="/signout"
-              onClick={handleSignOut}
+              exact
+              className="p-8 hover:text-gray-800"
+              activeClassName="text-xl-gray-800"
+              to="/"
             >
-              Sign Out
+              Home
             </NavLink>
-          ) : (
             <NavLink
-              className="p-8 hover:text-green-700"
-              to="/signin"
-              onClick={handleSignIn}
+              className="p-8 hover:text-gray-700"
+              activeClassName="text-gray-600"
+              to="/movies"
             >
-              Sign In
+              Movies
             </NavLink>
-          )}
-          {userName ? (
             <NavLink
-              className="p-8 hover:text-green-700"
-              activeClassName="text-green-600"
-              to="/bookmarked"
+              className="p-8 hover:text-gray-200"
+              activeClassName="text-gray-600"
+              to="/actors"
             >
-              Bookmark
+              Actors
             </NavLink>
-          ) : null}
-        </div>
-      </nav>
+            {userName ? (
+              <NavLink
+                className="p-8 hover:text-gray-700"
+                to="/"
+                onClick={handleSignOut}
+              >
+                Sign Out
+              </NavLink>
+            ) : (
+              <NavLink
+                className="p-8 hover:text-gray-200"
+                to=""
+                onClick={handleSignIn}
+              >
+                Sign In
+              </NavLink>
+            )}
+            {userName ? (
+              <NavLink
+                className="p-8 hover:text-gray-200"
+                activeClassName="text-gray-600"
+                to="/bookmarked"
+              >
+                Bookmark
+              </NavLink>
+            ) : null}
+          </div>
+        </nav>
+      </div>
     </div>
   );
 }

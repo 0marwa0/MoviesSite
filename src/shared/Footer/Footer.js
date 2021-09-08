@@ -3,24 +3,40 @@ import 'semantic-ui-css/semantic.min.css';
 import allData, { developerInfo } from './FooterData';
 import DeveloperTeam from './DeveloperTeam';
 import FooterBox from './FooterBox';
+import '../../styles/app.css';
 
-export default function Footer() {
+export default function Index() {
   const devInfo = developerInfo;
+  console.log('footer');
   return (
     <div className="footer bg-footer-bg text-footer-header">
       <div className="ui grid container w-screen ">
-        <div className="three column row  ui grid grid-cols-3 gap-x-5">
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'end',
+            marginTop: '70px',
+          }}
+        >
           <FooterBox props={allData[0]} title="Pages" />
           <FooterBox props={allData[1]} title="Service" />
           <FooterBox props={allData[2]} title="Contact US" />
         </div>
-        <h1
+        <div
           className="one column row centered  text-2xl"
-          style={{ textAlign: 'center', width: '100%' }}
+          style={{ marginLeft: '-50px' }}
         >
-          Meet Our Team
-        </h1>
-        <div className="three column row ml-60  ">
+          <span> Meet Our Team</span>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'end',
+            marginRight: '30px',
+          }}
+        >
           {devInfo.map((info) => (
             <DeveloperTeam
               key={info.imgUrl}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-// import Footer from './shared/Footer';
+import Footer from './shared/Footer/Footer';
 import Navbar from './shared/Navbar';
 import HomePage from './Pages/homepage';
 import Movies from './Pages/movies';
@@ -12,7 +12,7 @@ import SideBar from './shared/SideBar';
 import { fetchPopularMovies } from './Store/reducers/PopularReducer';
 import './styles/index.css';
 import './styles/app.css';
-import BookmarkMovies from './Pages/bookmarkMovies/BookmarkMovies';
+import BookmarkMovies from './Pages/bookmarkMovies';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,16 +35,16 @@ function App() {
       <SideBar />
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/actors" component={Actors} />
-        <Route path="/actor/:id" component={Actor} />
-        <Route path="/movie/:id" component={Movie} />
-        <Route path="/collection" component={HomePage} />
+        <Route path="/movies" component={Movies} exact />
+        <Route path="/actors" component={Actors} exact />
+        <Route path="/actor/:id" component={Actor} exact />
+        <Route path="/movie/:id" component={Movie} exact />
+        <Route path="/collection" component={HomePage} exact />
         {userName ? (
           <Route path="/bookmarked" component={BookmarkMovies} />
         ) : null}
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

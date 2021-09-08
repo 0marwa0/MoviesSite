@@ -1,25 +1,22 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { RiDeleteBinLine } from 'react-icons/ri';
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import { bookRemoved } from '../../Store/reducers/BookMarkReducer';
 import { fetchPopularMovies } from '../../Store/reducers/PopularReducer';
 import { fetchGenre } from '../../Store/reducers/GenreReducer';
-import { bookAdded } from '../../Store/reducers/BookMarkReducer';
 import { imageUrl } from '../../Store/reducers/config';
 import '../../shared/index.css';
-// import ListLoading from '../../shared/Loading/ListLoading';
 
-function Movies() {
+function Index() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const popularMovies = useSelector(
-    (state) => state.popularMovies.data.results
-  );
+  const popularMovies = useSelector((state) => state.bookMark.data);
   const moviesGenre = useSelector((state) => state.moviesGenre.data);
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 4;
-  //  const [perPage, setPerPage] = useState(6);
+
   useEffect(() => {
     dispatch(fetchPopularMovies());
     dispatch(fetchGenre());
@@ -43,16 +40,12 @@ function Movies() {
       setCurrentPage((page) => page - 1);
     }
   };
-  const onBook = (item) => {
-    // const isChecked = e.target.checked;
-    // if (isChecked) {
-    dispatch(bookAdded(item));
-    // }
+  const onDelete = (id) => {
+    dispatch(bookRemoved(id));
   };
   return (
     <div className="gridhomepage">
       <div className="List">
-        {/* <ListLoading /> */}
         <div className="ListItems">
           <div>Poster</div>
           <div>Movie title</div>
@@ -81,23 +74,11 @@ function Movies() {
               ))}
             </div>
             <div>
-              {' '}
-              {/* <label className="inline-flex items-center" htmlFor="book">
-                <input
-                 
-                  type="checkbox"
-                  className="form-checkbox"
-                />
-                <span className="ml-2" />
-              </label> */}
-              <input
-                className="styled-checkbox"
-                id="styled-checkbox-1"
-                type="checkbox"
-                value="value1"
-                onChange={() => onBook(item)}
+              <RiDeleteBinLine
+                color="red"
+                onClick={() => onDelete(item.id)}
+                cursor="pinter"
               />
-              <label />
             </div>
           </div>
         ))}
@@ -109,7 +90,7 @@ function Movies() {
               <GrPrevious color="orange" />
             </button>
             {currentPage}-{totalPages}
-            <button type="button" onClick={onNext}>
+            <button type="button" onClick={() => onNext()}>
               <GrNext color="red" />
             </button>
           </div>
@@ -119,4 +100,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Index;
