@@ -4,10 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'footer-bg': '#1D8C7F',
-        'footer-header': '#14EFD5',
-        'footer-link': '#1D8C7F',
-        'footer-card': '#E6F9F6',
+        'footer-bg': 'rgba(13,17,23,255)',
+        'footer-header': 'gray',
+        'footer-link': 'rgba(193,196,187,255)',
+        'footer-card': 'rgba(13,17,23,255)',
       },
     },
   },

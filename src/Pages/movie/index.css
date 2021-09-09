@@ -1,0 +1,73 @@
+.movieCastHolder{
+    height: 185px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;padding: 20px;
+    width:100% ;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+
+}
+.movieCast{
+    display: grid;
+    height: 50px;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: 40px 3fr 3fr;
+}
+.movieCast img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.actorRole{
+    width: max-content;
+    padding: 4px 7px;
+    height: 25px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 10px;
+    color: white;
+    background-color: var(--backup);
+}
+.moviePoster{
+   height: 400px; 
+}
+.TitleText{
+  font-size: 20px;
+  color: var(--gryText);
+  font-weight: bold;
+  padding: 8px 0;
+}
+.movieOverview{
+   
+    width: 850px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    height: 450px;
+    gap: 20px;
+    margin: 10px;
+    color: var(--gryText);
+    background-color: var(--secondery);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color:  red;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--priamrey);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--backup);
+  border-radius: 20px;
+  border: 3px solid var(--priamrey)}

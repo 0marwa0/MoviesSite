@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Footer from './shared_components/Footer/Footer';
-import Navbar from './shared_components/Navbar';
-import Sidebar from './shared_components/Sidebar';
-import HomePage from './components/homepage/HomePage';
-import Movies from './components/movies/Movies';
-import Actors from './components/actors/Actors';
+import { Route, Switch } from 'react-router-dom';
+import Footer from './shared/Footer/Footer';
+import Navbar from './shared/Navbar';
+import HomePage from './Pages/homepage';
+import Movies from './Pages/movies';
+import Movie from './Pages/movie';
+import Actors from './Pages/actors';
+import Actor from './Pages/actor';
+import SideBar from './shared/SideBar';
 import { fetchPopularMovies } from './Store/reducers/PopularReducer';
 import './styles/index.css';
 import './styles/app.css';
-// import SideBar from './SideBar';
-// import 'antd/dist/antd.css';
-// import MostPopular from './MostPopular';
-// import PopularCard from './PopularCard';
-import BookmarkMovies from './components/bookmarkMovies/BookmarkMovies';
+import BookmarkMovies from './Pages/bookmarkMovies';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,11 +32,14 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Sidebar />
+      <SideBar />
       <Switch>
         <Route path="/" exact component={HomePage} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/actors" component={Actors} />
+        <Route path="/movies" component={Movies} exact />
+        <Route path="/actors" component={Actors} exact />
+        <Route path="/actor/:id" component={Actor} exact />
+        <Route path="/movie/:id" component={Movie} exact />
+        <Route path="/collection" component={HomePage} exact />
         {userName ? (
           <Route path="/bookmarked" component={BookmarkMovies} />
         ) : null}

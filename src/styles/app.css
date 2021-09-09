@@ -2,25 +2,49 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: repeat(10,minmax(100px,auto));
- 
-}
+ grid-template-columns: auto 440px;
+    grid-template-areas:
+      "header  sidebar"
+      "content sidebar"
+      "content sidebar"
+      "content sidebar"
+      "content sidebar"
+      "content sidebar"
+      "footer  footer"
+   }
+
 
 .nav {
-grid-column:1/6;
-
+  grid-area: header;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  color:gainsboro !important;
 }
 
 .sidebar {
-grid-column: 7/11;
-
+  grid-area: sidebar;
+  height: 100vh;
 }
-
+.Widget_title{
+  margin-top: 200px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  color: var(--gryText);
+  font-size: 17px;
+  font-weight: bold;
+}
 .gridhomepage{
-  grid-column: 1/6;
+  grid-area: content;
+  display: flex;
+   align-items: center;
+  justify-content: center;
 }
 
 
 .footer{
-  grid-column: 1/11;
+
+  grid-area: footer;
 }

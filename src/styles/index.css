@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root{
+    --gryText:rgba(193,196,187,255);
+    --priamrey:rgba(13,17,23,255);
+    --secondery:rgba(22,27,34,255);
+    --backup:rgba(48,54,61,255);
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color:var(--priamrey)}
+.ListItems{
+padding: 10px;
+align-items: center;
+display: grid;
+border-radius: 10px;
+margin: 10px;
+gap: 10px;
+color: var(--gryText);
+background-color:var(--priamrey);
+white-space: initial;
+grid-template-columns: 70px 170px 110px 100px 200px auto;
+
+}
+.ListItems div{
+    text-align: center;
+}
+.ListItems:hover{
+    background-color: var(--backup);
+    
+}
+.List{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondery);
+    border-radius: 20px;
+    width: 850px; 
+    margin: 20px;
+    padding: 10px;
+    
+}
+.ListItems img{
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
