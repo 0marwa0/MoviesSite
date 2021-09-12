@@ -7,7 +7,7 @@ import '../../styles/app.css';
 
 export default function Index() {
   const devInfo = developerInfo;
-  console.log('footer');
+
   return (
     <div className="footer bg-footer-bg text-footer-header">
       <div className="ui grid container w-screen ">

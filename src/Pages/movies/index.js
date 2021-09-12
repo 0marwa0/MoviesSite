@@ -5,10 +5,11 @@ import { useHistory } from 'react-router-dom';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { fetchPopularMovies } from '../../Store/reducers/PopularReducer';
 import { fetchGenre } from '../../Store/reducers/GenreReducer';
-import { bookAdded } from '../../Store/reducers/BookMarkReducer';
+// import { bookAdded } from '../../Store/reducers/BookMarkReducer';
 import { imageUrl } from '../../Store/reducers/config';
 import '../../shared/index.css';
 // import ListLoading from '../../shared/Loading/ListLoading';
+import { auth, db } from '../../firebase';
 
 function Movies() {
   const history = useHistory();
@@ -43,12 +44,34 @@ function Movies() {
       setCurrentPage((page) => page - 1);
     }
   };
+
   const onBook = (item) => {
     // const isChecked = e.target.checked;
     // if (isChecked) {
-    dispatch(bookAdded(item));
+    let bookmarksRef;
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        bookmarksRef = db.collection('bookmarks');
+        bookmarksRef.add({ ...item, uid: user.uid });
+        // dispatch(bookAdded({...item,uid:user.uid}));
+      }
+    });
     // }
   };
+
+  // firebase database
+  // let bookmarksRef;
+  // auth.onAuthStateChanged((user)=>{
+  // if(user){
+  // bookmarksRef=db.collection('bookmarks');
+  // dispatch(bookAdded({item}));
+
+  // }
+  // else{
+
+  // }
+  // })
+
   return (
     <div className="gridhomepage">
       <div className="List">
@@ -95,7 +118,7 @@ function Movies() {
                 id="styled-checkbox-1"
                 type="checkbox"
                 value="value1"
-                onChange={() => onBook(item)}
+                onClick={() => onBook({ item })}
               />
               <label />
             </div>

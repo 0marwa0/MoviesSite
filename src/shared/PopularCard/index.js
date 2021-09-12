@@ -3,10 +3,10 @@ import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
 import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-multi-carousel';
-import { fetchGenre } from '../Store/reducers/GenreReducer';
-import { imageUrl } from '../Store/reducers/config';
-import { fetchPopularMovies } from '../Store/reducers/PopularReducer';
-import { fallSilder } from '../shared/SilderConfig';
+import { fetchGenre } from '../../Store/reducers/GenreReducer';
+import { imageUrl } from '../../Store/reducers/config';
+import { fetchPopularMovies } from '../../Store/reducers/PopularReducer';
+import { fallSilder } from '../SilderConfig';
 
 function PopularCard() {
   const MoviesGenre = useSelector((state) => state.moviesGenre.data);
@@ -22,8 +22,9 @@ function PopularCard() {
   return (
     <div className="popularList">
       <Carousel responsive={fallSilder}>
-        {data.map((item) => (
-          <div className="popularCard">
+        {data.map((item, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <div key={index} className="popularCard">
             <img src={`${imageUrl}${item.poster_path}`} alt="top rated" />
             <div className="cardText">
               <div className="cardTitle">
@@ -31,8 +32,9 @@ function PopularCard() {
 
                 <span className="rateCtrl">{item.vote_average}</span>
               </div>
-              {item.genre_ids.map((i) => (
-                <span>{MoviesGenre[i]}</span>
+              {item.genre_ids.map((i, a) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <span key={a}>{MoviesGenre[i]}</span>
               ))}
             </div>
           </div>

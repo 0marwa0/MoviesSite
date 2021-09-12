@@ -19,6 +19,7 @@ function Navbar() {
       .then((result) => {
         dispatch(
           setActiveUser({
+            uid: result.user.uid,
             userName: result.user.displayName,
             userEmail: result.user.email,
             photoURL: result.user.photoURL,
