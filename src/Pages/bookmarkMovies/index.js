@@ -16,6 +16,8 @@ function Index() {
   const history = useHistory();
   const dispatch = useDispatch();
   // const popularMovies = useSelector((state) => state.bookMark.data);
+
+  const uid = useSelector((state) => state.user.uid);
   const moviesGenre = useSelector((state) => state.moviesGenre.data);
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 4;
@@ -46,57 +48,50 @@ function Index() {
     }
   };
   const onDelete = (id) => {
-    auth.onAuthStateChanged((user) => {
-      const bookmarkedRef = db
-        .collection('bookmarks')
-        .where('uid', '==', user.uid)
-        .where('item.id', '==', id);
-      // let unsubscribe;
-      if (user) {
-        bookmarkedRef.get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => doc.ref.delete());
-
-          // forEach((doc) => {
-          //   console.log('ref');
-          //   doc.ref.delete();
-          // });
-        });
-        // bookmarkedRef
-        //   .doc(id)
-        //   .delete()
-        //   .then(console.log('deleted'))
-        //   .catch((err) => console.log(err));
-
-        // onSnapshot((querySnapshot) => {
-        //   setBookmarks(querySnapshot.docs);
-        //   console.log(bookmarks)
-        // });
-      }
-    });
+    const bookmarkedRef = db
+      .collection('bookmarks')
+      .where('uid', '==', uid)
+      .where('item.id', '==', id);
+    if (uid) {
+      bookmarkedRef.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => doc.ref.delete());
+      });
+    }
+    // not correct don't use onAuthStateChanged just get the uid !!!!!
+    // auth.onAuthStateChanged((user) => {
+    //   const bookmarkedRef = db
+    //     .collection('bookmarks')
+    //     .where('uid', '==', user.uid)
+    //     .where('item.id', '==', id);
+    //   if (user) {
+    //     bookmarkedRef.get().then((querySnapshot) => {
+    //       querySnapshot.forEach((doc) => doc.ref.delete());
+    //     });
+    //   }
+    // });
   };
-  useEffect(() => {
-    // let unsubscribe;
-    auth.onAuthStateChanged((user) => {
-      const bookmarkedRef = db.collection('bookmarks');
 
-      // let unsubscribe;
+  useEffect(() => {
+    let unsubscribe;
+
+    auth.onAuthStateChanged((user) => {
       if (user) {
-        bookmarkedRef
+        unsubscribe = db
+          .collection('bookmarks')
           .where('uid', '==', user.uid)
-          .get()
-          .then((querySnapshot) => {
-            // console.log(querySnapshot);
+          .onSnapshot((querySnapshot) => {
+            console.log(querySnapshot);
             setBookmarks(querySnapshot.docs);
           });
 
-        // onSnapshot((querySnapshot) => {
+        // bookmarkedRef.get().then((querySnapshot) => {
+        //   console.log(querySnapshot);
         //   setBookmarks(querySnapshot.docs);
-        //   console.log(bookmarks)
         // });
       }
     });
-    // return () => unsubscribe();
-  }, [onDelete]);
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div className="gridhomepage">

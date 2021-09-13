@@ -18,6 +18,7 @@ const UserReducer = createSlice({
       state.photoURL = action.payload.photoURL;
     },
     setUserLogOutState(state) {
+      state.uid = null;
       state.userName = null;
       state.userEmail = null;
       state.photoURL = null;

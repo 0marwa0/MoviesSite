@@ -9,11 +9,12 @@ import { fetchGenre } from '../../Store/reducers/GenreReducer';
 import { imageUrl } from '../../Store/reducers/config';
 import '../../shared/index.css';
 // import ListLoading from '../../shared/Loading/ListLoading';
-import { auth, db } from '../../firebase';
+import { db } from '../../firebase';
 
 function Movies() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const uid = useSelector((state) => state.user.uid);
   const popularMovies = useSelector(
     (state) => state.popularMovies.data.results
   );
@@ -46,31 +47,22 @@ function Movies() {
   };
 
   const onBook = (item) => {
-    // const isChecked = e.target.checked;
-    // if (isChecked) {
     let bookmarksRef;
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        bookmarksRef = db.collection('bookmarks');
-        bookmarksRef.add({ ...item, uid: user.uid });
-        // dispatch(bookAdded({...item,uid:user.uid}));
-      }
-    });
+    if (uid) {
+      bookmarksRef = db.collection('bookmarks');
+      bookmarksRef.add({ ...item, uid });
+    }
+
+    // not the correct way don't do this!!!!!!
+    // let bookmarksRef;
+    // auth.onAuthStateChanged((user) => {
+    //   if (user) {
+    //     bookmarksRef = db.collection('bookmarks');
+    //     bookmarksRef.add({ ...item, uid: user.uid });
+    //   }
+    // });
     // }
   };
-
-  // firebase database
-  // let bookmarksRef;
-  // auth.onAuthStateChanged((user)=>{
-  // if(user){
-  // bookmarksRef=db.collection('bookmarks');
-  // dispatch(bookAdded({item}));
-
-  // }
-  // else{
-
-  // }
-  // })
 
   return (
     <div className="gridhomepage">
